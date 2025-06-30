@@ -1,0 +1,107 @@
+preguntas_por_categoria = {
+    "Fútbol": [
+        {
+            "pregunta": "¿Quién ganó el Mundial 2014?",
+            "opciones": {
+                "a": "Argentina",
+                "b": "Brasil",
+                "c": "Alemania",
+                "d": "Francia"
+            },
+            "respuesta": "c",
+            "puntos": "Facil"
+        },
+        {
+            "pregunta": "¿Qué jugador tiene más goles en mundiales?",
+            "opciones": {
+                "a": "Messi",
+                "b": "Ronaldo Nazário",
+                "c": "Miroslav Klose",
+                "d": "Pelé"
+            },
+            "respuesta": "c",
+            "puntos": "Media"
+        },
+        {
+            "pregunta": "¿En qué año fue el primer Mundial de fútbol?",
+            "opciones": {
+                "a": "1920",
+                "b": "1930",
+                "c": "1940",
+                "d": "1950"
+            },
+            "respuesta": "b",
+            "puntos": "Dificil"
+        }
+    ],
+    "Videojuegos": [
+        {
+            "pregunta": "¿Cuál es el personaje principal de la saga Zelda?",
+            "opciones": {
+                "a": "Link",
+                "b": "Zelda",
+                "c": "Mario",
+                "d": "Luigi"
+            },
+            "respuesta": "a",
+            "puntos": "Facil"
+        },
+        {
+            "pregunta": "¿Qué juego popular lanzó Epic Games?",
+            "opciones": {
+                "a": "Apex Legends",
+                "b": "Minecraft",
+                "c": "Fortnite",
+                "d": "Valorant"
+            },
+            "respuesta": "c",
+            "puntos": "Media"
+        },
+        {
+            "pregunta": "¿En qué año se lanzó el primer juego de Mario?",
+            "opciones": {
+                "a": "1981",
+                "b": "1985",
+                "c": "1989",
+                "d": "1992"
+            },
+            "respuesta": "b",
+            "puntos": "Dificil"
+        }
+    ],
+    "Entretenimiento": [
+        {
+            "pregunta": "¿Quién protagoniza la película 'Iron Man'?",
+            "opciones": {
+                "a": "Chris Evans",
+                "b": "Robert Downey Jr.",
+                "c": "Chris Hemsworth",
+                "d": "Mark Ruffalo"
+            },
+            "respuesta": "b",
+            "puntos": "Facil"
+        },
+        {
+            "pregunta": "¿Cuál de estas películas ganó un Oscar a Mejor Película?",
+            "opciones": {
+                "a": "Titanic",
+                "b": "Avengers: Endgame",
+                "c": "Shrek",
+                "d": "Joker"
+            },
+            "respuesta": "a",
+            "puntos": "Media"
+        },
+        {
+            "pregunta": "¿En qué año se estrenó la serie 'Stranger Things'?",
+            "opciones": {
+                "a": "2014",
+                "b": "2015",
+                "c": "2016",
+                "d": "2017"
+            },
+            "respuesta": "c",
+            "puntos": "Dificil"
+        }
+    ]
+}
