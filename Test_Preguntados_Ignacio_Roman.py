@@ -102,16 +102,25 @@ def jugar(categoria, dificultad):
     print("Tu puntaje total fue:", puntaje)
 
 # ===================== PROGRAMA PRINCIPAL =====================
+seguir_jugando = "si"
 
-mostrar_menu()
-categoria = obtener_opciones()
-dificultad = seleccionar_dificultad()
+while seguir_jugando == "si":
+    limpiar_pantalla()
+    mostrar_menu()
+    categoria = obtener_opciones()
+    dificultad = seleccionar_dificultad()
 
-limpiar_pantalla()
-print("")
-print("Elegiste la categoría:", categoria)
-print("Elegiste la dificultad:", dificultad)
+    limpiar_pantalla()
+    print("")
+    print("Elegiste la categoría:", categoria)
+    print("Elegiste la dificultad:", dificultad)
 
-jugar(categoria, dificultad)
-print("=========HORA TERMINADA DEL JUEGO=========")
-mostrar_hora()
+    jugar(categoria, dificultad)
+
+    print("========= HORA DE FIN DE LA RONDA =========")
+    mostrar_hora()
+
+    seguir_jugando = input("\n¿Querés jugar una nueva ronda? (si/no): ")
+
+print("\nGracias por jugar. ¡Hasta la próxima!")
+
