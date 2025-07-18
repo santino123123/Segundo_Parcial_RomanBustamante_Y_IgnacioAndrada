@@ -1,126 +1,133 @@
-import os 
-from preguntas_main import *
-import time
-
-def mostrar_hora():
-    print(time.ctime(time.time()))
-
-
-def limpiar_pantalla():
-    if os.name == 'nt':
-        os.system("cls")
-    else:
-        os.system("clear")
+from usuario import *
+from importante import *
+from buscaminas import *
+import json
+import csv
 
 
-def mostrar_menu():
-    print("╔══════════════════════════════════════╗")
-    print("║            JUEGO PREGUNTADOS         ║")
-    print("╠══════════════════════════════════════╣")
-    print("║ Elegí una categoría para jugar:      ║")
-    print("║                                      ║")
-    print("║ 1. Fútbol                            ║")
-    print("║ 2. Videojuegos                       ║")
-    print("║ 3. Entretenimiento                   ║")
-    print("╚══════════════════════════════════════╝")
-    print("==========  HORA DE INICIO    ==========")
-    mostrar_hora()
 
-def obtener_opciones():
-    entrada_opciones = False
-    while entrada_opciones == False:
-        entrada = input("Selecciona una categoría (1-3): ")
-        if entrada == "1":
-            return "Fútbol"
-        elif entrada == "2":
-            return "Videojuegos"
-        elif entrada == "3":
-            return "Entretenimiento"
-        else:
-            print("Opción inválida. Intenta nuevamente.")
-
-
-def seleccionar_dificultad():
-    print("\nDIFICULTADES DISPONIBLES:")
-    print("1. Fácil")
-    print("2. Intermedio")
-    print("3. Difícil")
-    entrada_valida = False
-    while entrada_valida == False:
-        dificultad = input("Elegí una dificultad (1-3): ")
-        if dificultad == "1":
-            return "Facil"
-        if dificultad == "2":
-            return "Media"
-        if dificultad == "3":
-            return "Dificil"
-        print("Opción inválida. Intentá otra vez.")
-
-def filtrar_preguntas_por_dificultad(lista_preguntas, nivel):
-    lista_filtrada = []
-    i = 0
-    while i < len(lista_preguntas):
-        if lista_preguntas[i]["puntos"] == nivel:
-            lista_filtrada.append(lista_preguntas[i])
-        i = i + 1
-    if len(lista_filtrada) == 0:
-        print("⚠ No se encontraron preguntas con dificultad:", nivel)
-    return lista_filtrada
-
-def hacer_pregunta(pregunta):
-    print("")
-    print("PREGUNTA:")
-    print(pregunta["pregunta"])
-    for clave in ["a", "b", "c", "d"]:
-        print(clave + ")", pregunta["opciones"][clave])
-    print("(⏰Tenés 10 segundos para responder)")
-    respuesta = (input("Tu respuesta (a/b/c/d): "))
-    if respuesta == pregunta["respuesta"]:
-        print("¡Correcto!")
-        return 1
-    else:
-        print("Incorrecto. La respuesta correcta era:", pregunta["respuesta"])
-        return 0
-
-def jugar(categoria, dificultad):
-    preguntas = preguntas_por_categoria[categoria]
-    preguntas_filtradas = filtrar_preguntas_por_dificultad(preguntas, dificultad)
-    puntaje = 0
-
-    if len(preguntas_filtradas) == 0:
-        print("No hay preguntas disponibles para esa dificultad.")
+def mostrar_estadisticas(ruta_archivo):
+    limpiar_pantalla()
+    print("══════════════════════════════════════════")
+    print("            📊 ESTADÍSTICAS 📊")
+    print("══════════════════════════════════════════")
+    if not os.path.exists(ruta_archivo):
+        print("No hay estadísticas registradas aún.")
         return
+    with open(ruta_archivo, "r") as archivo:
+        historial = json.load(archivo)
+        for estadistica in historial:
+            print("──────────────────────────────────")
+            print("Jugador:", estadistica["nombre"])
+            print("Puntos Totales:", estadistica["puntos_totales"])
+            print("Rondas Jugadas:", estadistica["rondas_jugadas"])
+            print("Fecha:", estadistica["fecha"], "Hora:", estadistica["hora"])
+    print("──────────────────────────────────")
 
-    indice = 0
-    while indice < len(preguntas_filtradas):
-        pregunta = preguntas_filtradas[indice]
-        puntaje = puntaje + hacer_pregunta(pregunta)
-        indice = indice + 1
+def decidir_orden_jugadores(jugadores, ganador, eleccion):
+    orden = []
+    if eleccion == "si":
+        orden.append(ganador)
+        for j in jugadores:
+            if j != ganador:
+                orden.append(j)
+    else:
+        for j in jugadores:
+            if j != ganador:
+                orden.append(j)
+        orden.append(ganador)
+    return orden
 
-    print("")
-    print("\n🎉 JUEGO FINALIZADO 🎉")
-    print("Tu puntaje total fue:", puntaje)
+def obtener_ganador_final(puntajes):
+    ganador = None
+    mayor_puntaje = -1
+    for jugador in puntajes:
+        if puntajes[jugador] > mayor_puntaje:
+            mayor_puntaje = puntajes[jugador]
+            ganador = jugador
+    return ganador
 
-# ===================== PROGRAMA PRINCIPAL =====================
-seguir_jugando = "si"
-
-while seguir_jugando == "si":
+def ejecutar_juego(jugar_buscaminas_func, jugar_preguntados_func):
     limpiar_pantalla()
     mostrar_menu()
-    categoria = obtener_opciones()
-    dificultad = seleccionar_dificultad()
+
+    jugadores = []
+    nombre1 = pedir_nombre()
+    jugadores.append(nombre1)
+
+    modo = int(input("¿Jugás solo (1) o con otro jugador (2)? "))
+    if modo == 2:
+        nombre2 = pedir_nombre()
+        jugadores.append(nombre2)
+
+    print("¿Querés empezar con:")
+    print("1. Preguntados")
+    print("2. Buscaminas")
+    opcion = input("Elegí (1 o 2): ")
+
+    orden_jugadores = []
+    for jugador in jugadores:
+        orden_jugadores.append(jugador)
+
+    if opcion == "2":
+        ganador = jugar_buscaminas_func(modo)
+        if ganador != "empate":
+            print(ganador, "ganó el Buscaminas y decide si empieza primero.")
+            eleccion = input(f"{ganador} ¿querés jugar primero en Preguntados? (si/no): ")
+            orden_jugadores = decidir_orden_jugadores(jugadores, ganador, eleccion)
+
+    puntajes = {}
+    for jugador in orden_jugadores:
+        print("🎮 Turno de", jugador)
+        total = jugar_preguntados_func(jugador)
+        puntajes[jugador] = total
 
     limpiar_pantalla()
-    print("")
-    print("Elegiste la categoría:", categoria)
-    print("Elegiste la dificultad:", dificultad)
+    print("🎉 RESULTADOS FINALES 🎉")
+    for jugador in puntajes:
+        print(jugador, "obtuvo", puntajes[jugador], "puntos")
+    ganador_final = obtener_ganador_final(puntajes)
+    print(f"🏆 ¡El ganador es {ganador_final}  ! 🏆")
 
-    jugar(categoria, dificultad)
+def menu_principal():
+    while True:
+        limpiar_pantalla()
+        print("══════════════════════════════════════════")
+        print("            MENÚ PRINCIPAL")
+        print("══════════════════════════════════════════")
+        print("1. Ver estadísticas")
+        print("2. Jugar Preguntados + Buscaminas")
+        print("3. Salir")
+        opcion = input("Elegí una opción (1-3): ")
 
-    print("========= HORA DE FIN DE LA RONDA =========")
-    mostrar_hora()
+        if opcion == "1":
+            mostrar_estadisticas("estadisticas.json")
+            input("Presioná Enter para volver al menú...")
+        elif opcion == "2":
+            ejecutar_juego(jugar_buscaminas, jugar_preguntados)
+            input("Presioná Enter para volver al menú...")
+        elif opcion == "3":
+            print("¡Gracias por jugar! Hasta la próxima.")
+            break
+        else:
+            print("Opción inválida. Intentá de nuevo.")
+            input("Presioná Enter para continuar...")
 
-    seguir_jugando = input("\n¿Querés jugar una nueva ronda? (si/no): ")
+with open("preguntas_exportadas.csv", "w", encoding="utf-8") as archivo:
+    escritor = csv.writer(archivo)
+    escritor.writerow(["Categoría", "Pregunta", "Opción A", "Opción B", "Opción C", "Opción D", "Respuesta", "Dificultad"])
+    for categoria, lista_preguntas in preguntas_por_categoria.items():
+        for pregunta in lista_preguntas:
+            escritor.writerow([
+                categoria,
+                pregunta["pregunta"],
+                pregunta["opciones"]["a"],
+                pregunta["opciones"]["b"],
+                pregunta["opciones"]["c"],
+                pregunta["opciones"]["d"],
+                pregunta["respuesta"],
+                pregunta["puntos"]
+            ])
+print("Preguntas exportadas correctamente a preguntas_exportadas.csv")
 
-print("\nGracias por jugar. ¡Hasta la próxima!")
-
+menu_principal()
