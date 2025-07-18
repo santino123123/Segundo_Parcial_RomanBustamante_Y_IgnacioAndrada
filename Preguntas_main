@@ -32,43 +32,142 @@ preguntas_por_categoria = {
             },
             "respuesta": "b",
             "puntos": "Dificil"
-        }
-    ],
-    "Videojuegos": [
+        },
         {
-            "pregunta": "¿Cuál es el personaje principal de la saga Zelda?",
+            "pregunta": "¿Qué país ha ganado más Copas del Mundo?",
             "opciones": {
-                "a": "Link",
-                "b": "Zelda",
-                "c": "Mario",
-                "d": "Luigi"
+                "a": "Italia",
+                "b": "Alemania",
+                "c": "Brasil",
+                "d": "Argentina"
             },
-            "respuesta": "a",
+            "respuesta": "c",
             "puntos": "Facil"
         },
         {
-            "pregunta": "¿Qué juego popular lanzó Epic Games?",
+            "pregunta": "¿Qué equipo ganó la Champions League 2023?",
             "opciones": {
-                "a": "Apex Legends",
-                "b": "Minecraft",
-                "c": "Fortnite",
-                "d": "Valorant"
+                "a": "Manchester City",
+                "b": "Real Madrid",
+                "c": "Liverpool",
+                "d": "Bayern Múnich"
             },
-            "respuesta": "c",
+            "respuesta": "a",
             "puntos": "Media"
         },
         {
-            "pregunta": "¿En qué año se lanzó el primer juego de Mario?",
+            "pregunta": "¿Qué selección fue la anfitriona del Mundial 2002?",
             "opciones": {
-                "a": "1981",
-                "b": "1985",
-                "c": "1989",
-                "d": "1992"
+                "a": "Japón",
+                "b": "Corea del Sur",
+                "c": "Todas son correctas",
+                "d": "Ninguna es correcta"
             },
-            "respuesta": "b",
+            "respuesta": "c",
             "puntos": "Dificil"
         }
     ],
+    "Videojuegos": [
+    {
+        "pregunta": "¿Cuál es el personaje principal de la saga Zelda?",
+        "opciones": {
+            "a": "Link",
+            "b": "Zelda",
+            "c": "Mario",
+            "d": "Luigi"
+        },
+        "respuesta": "a",
+        "puntos": "Facil"
+    },
+    {
+        "pregunta": "¿Qué consola lanzó Nintendo en 2006?",
+        "opciones": {
+            "a": "GameCube",
+            "b": "Wii",
+            "c": "Switch",
+            "d": "DS"
+        },
+        "respuesta": "b",
+        "puntos": "Facil"
+    },
+    {
+        "pregunta": "¿Cuál es el nombre del hermano de Mario?",
+        "opciones": {
+            "a": "Toad",
+            "b": "Luigi",
+            "c": "Bowser",
+            "d": "Yoshi"
+        },
+        "respuesta": "b",
+        "puntos": "Facil"
+    },
+    {
+        "pregunta": "¿Qué juego popular lanzó Epic Games?",
+        "opciones": {
+            "a": "Apex Legends",
+            "b": "Minecraft",
+            "c": "Fortnite",
+            "d": "Valorant"
+        },
+        "respuesta": "c",
+        "puntos": "Media"
+    },
+    {
+        "pregunta": "¿En qué juego aparece el personaje Master Chief?",
+        "opciones": {
+            "a": "Halo",
+            "b": "Call of Duty",
+            "c": "Gears of War",
+            "d": "Mass Effect"
+        },
+        "respuesta": "a",
+        "puntos": "Media"
+    },
+    {
+        "pregunta": "¿Qué animal es Sonic?",
+        "opciones": {
+            "a": "Erizo",
+            "b": "Zorro",
+            "c": "Gato",
+            "d": "Perro"
+        },
+        "respuesta": "a",
+        "puntos": "Media"
+    },
+    {
+        "pregunta": "¿En qué año se lanzó el primer juego de Mario?",
+        "opciones": {
+            "a": "1981",
+            "b": "1985",
+            "c": "1989",
+            "d": "1992"
+        },
+        "respuesta": "b",
+        "puntos": "Dificil"
+    },
+    {
+        "pregunta": "¿Cuál fue el primer videojuego de la historia?",
+        "opciones": {
+            "a": "Tetris",
+            "b": "Pong",
+            "c": "Pac-Man",
+            "d": "Space Invaders"
+        },
+        "respuesta": "b",
+        "puntos": "Dificil"
+    },
+    {
+        "pregunta": "¿Qué empresa desarrolló el juego The Witcher 3?",
+        "opciones": {
+            "a": "CD Projekt Red",
+            "b": "Ubisoft",
+            "c": "EA",
+            "d": "Bethesda"
+        },
+        "respuesta": "a",
+        "puntos": "Dificil"
+    }
+],
     "Entretenimiento": [
         {
             "pregunta": "¿Quién protagoniza la película 'Iron Man'?",
@@ -102,6 +201,74 @@ preguntas_por_categoria = {
             },
             "respuesta": "c",
             "puntos": "Dificil"
+        },
+        {
+            "pregunta": "¿Qué actor interpreta a Jack Sparrow?",
+            "opciones": {
+                "a": "Brad Pitt",
+                "b": "Leonardo DiCaprio",
+                "c": "Johnny Depp",
+                "d": "Tom Cruise"
+            },
+            "respuesta": "c",
+            "puntos": "Facil"
+        },
+        {
+            "pregunta": "¿Qué serie pertenece al universo de Star Wars?",
+            "opciones": {
+                "a": "The Mandalorian",
+                "b": "The Witcher",
+                "c": "The Boys",
+                "d": "Loki"
+            },
+            "respuesta": "a",
+            "puntos": "Media"
+        },
+        {
+            "pregunta": "¿Quién dirigió la película 'Inception' (El Origen)?",
+            "opciones": {
+                "a": "Steven Spielberg",
+                "b": "Christopher Nolan",
+                "c": "James Cameron",
+                "d": "Quentin Tarantino"
+            },
+            "respuesta": "b",
+            "puntos": "Dificil"
         }
-    ]
+    ],
+    "Historia": [
+    {
+        "pregunta": "¿En qué año comenzó la Segunda Guerra Mundial?",
+        "opciones": {
+            "a": "1939",
+            "b": "1945",
+            "c": "1914",
+            "d": "1929"
+        },
+        "respuesta": "a",
+        "puntos": "Media"
+    },
+    {
+        "pregunta": "¿Quién fue el primer presidente de Estados Unidos?",
+        "opciones": {
+            "a": "Thomas Jefferson",
+            "b": "Abraham Lincoln",
+            "c": "George Washington",
+            "d": "John Adams"
+        },
+        "respuesta": "c",
+        "puntos": "Facil"
+    },
+    {
+        "pregunta": "¿Cuál fue la civilización que construyó Machu Picchu?",
+        "opciones": {
+            "a": "Azteca",
+            "b": "Inca",
+            "c": "Maya",
+            "d": "Olmeca"
+        },
+        "respuesta": "b",
+        "puntos": "Dificil"
+    }
+]
 }
